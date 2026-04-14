@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front Range Wholesale | Off-Market Colorado Deals</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 0.5px solid #e0ddd8;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
+    }
+    .logo span { color: #B05A1A; }
+
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .nav-links a { font-size: 14px; color: #666; text-decoration: none; font-weight: 400; }
+    .nav-links a:hover { color: #1a1a1a; }
+
+    .btn {
+      background: #B05A1A; color: #fff; border: none; border-radius: 6px;
+      padding: 10px 20px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer;
+    }
+    .btn:hover { background: #904812; }
+
+    .btn-outline {
+      background: transparent; border: 1px solid #ccc; color: #1a1a1a;
+      border-radius: 6px; padding: 10px 20px; font-size: 14px;
+      font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer;
+    }
+    .btn-outline:hover { border-color: #999; }
+
+    /* HERO */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; padding: 4rem 2rem 3rem;
+      max-width: 1100px; margin: 0 auto; align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 12px; font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase; color: #B05A1A; margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px; line-height: 1.1; font-weight: 700; margin-bottom: 1.25rem;
+    }
+    h1 em { font-style: italic; color: #B05A1A; }
+
+    .hero-sub {
+      font-size: 16px; color: #555; line-height: 1.7;
+      margin-bottom: 2rem; font-weight: 300;
+    }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* MAP CARD */
+    .map-card {
+      background: #f5f2ee; border: 1px solid #e0ddd8;
+      border-radius: 16px; overflow: hidden; position: relative; height: 360px;
+    }
+    .map-card svg { width: 100%; height: 100%; display: block; }
+
+    .city-tags {
+      position: absolute; bottom: 16px; left: 16px; right: 16px;
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .city-tag {
+      background: rgba(176,90,26,0.12); color: #B05A1A;
+      font-size: 11px; font-weight: 500; padding: 4px 10px;
+      border-radius: 20px; letter-spacing: 0.5px;
+    }
+
+    /* STATS */
+    .stats {
+      border-top: 1px solid #e0ddd8; border-bottom: 1px solid #e0ddd8;
+      padding: 2.5rem 2rem;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; max-width: 1100px; margin: 0 auto; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px; font-weight: 700; margin-bottom: 4px;
+    }
+    .stat-label { font-size: 13px; color: #666; }
+
+    /* PROCESS */
+    .process { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px; font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .section-sub {
+      font-size: 15px; color: #666; margin-bottom: 2.5rem; font-weight: 300;
+    }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    .step {
+      border: 1px solid #e0ddd8; border-radius: 14px; padding: 1.5rem;
+      background: #fff;
+    }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: #B05A1A; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 500; margin-bottom: 1rem;
+    }
+    .step-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+    .step-text { font-size: 13px; color: #666; line-height: 1.6; }
+
+    /* LISTINGS */
+    .listings { padding: 0 2rem 4rem; max-width: 1100px; margin: 0 auto; }
+    .listing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+
+    .listing-card {
+      border: 1px solid #e0ddd8; border-radius: 14px;
+      overflow: hidden; background: #fff;
+    }
+    .listing-img {
+      height: 140px; background: #f5f2ee;
+      position: relative; display: flex;
+      align-items: center; justify-content: center; overflow: hidden;
+    }
+    .listing-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: #B05A1A; color: #fff;
+      font-size: 10px; font-weight: 500; padding: 3px 8px;
+      border-radius: 4px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .listing-body { padding: 1rem; }
+    .listing-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700; margin-bottom: 4px;
+    }
+    .listing-addr { font-size: 13px; color: #666; margin-bottom: 10px; }
+    .listing-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag {
+      background: #f5f2ee; color: #666;
+      font-size: 11px; padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* CTA */
+    .cta {
+      background: #1A1410; color: #F5EFE8;
+      padding: 4rem 2rem; text-align: center; margin-top: 2rem;
+    }
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px; margin-bottom: 1rem;
+    }
+    .cta-sub { font-size: 15px; opacity: 0.7; margin-bottom: 2rem; font-weight: 300; }
+
+    .cta-form {
+      display: flex; gap: 10px; justify-content: center;
+      flex-wrap: wrap; max-width: 480px; margin: 0 auto;
+    }
+    .cta-input {
+      flex: 1; min-width: 180px; padding: 11px 14px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #F5EFE8; font-family: 'DM Sans', sans-serif; font-size: 14px;
+    }
+    .cta-input::placeholder { color: rgba(245,239,232,0.4); }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid #e0ddd8;
+      font-size: 13px; color: #888; flex-wrap: wrap; gap: 8px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .listing-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 34px; }
+      .nav-links a { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Front Range <span>Wholesale</span></div>
+    <div class="nav-links">
+      <a href="#listings">Deals</a>
+      <a href="#process">How It Works</a>
+      <a href="#cta">About</a>
+      <button class="btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Get Deals</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Denver · Boulder · Fort Collins · Colorado Springs</p>
+      <h1>Off-market deals<br>across the <em>Front Range</em></h1>
+      <p class="hero-sub">Direct access to distressed properties, fix-and-flips, and rental acquisitions — before they hit the MLS. No agents. No middlemen.</p>
+      <div class="hero-actions">
+        <button class="btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Join the Buyer's List</button>
+        <button class="btn-outline" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">View Active Deals</button>
+      </div>
+    </div>
+
+    <div class="map-card">
+      <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="360" fill="#1E1A15"/>
+        <path d="M60,20 L340,20 L340,340 L60,340 Z" fill="#28221A" stroke="#3A3020" stroke-width="0.5"/>
+        <path d="M0,220 L40,160 L70,195 L100,130 L130,175 L160,110 L190,145 L210,100 L240,140 L270,95 L300,135 L330,105 L360,130 L400,115 L400,360 L0,360 Z" fill="#16110C"/>
+        <path d="M200,30 L200,340" stroke="#B05A1A" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6"/>
+        <path d="M60,180 L340,180" stroke="#B05A1A" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.4"/>
+        <circle cx="200" cy="185" r="8" fill="#B05A1A" opacity="0.9"/>
+        <text x="215" y="190" fill="#F5EFE8" font-size="11" font-family="DM Sans,sans-serif" font-weight="500">Denver</text>
+        <circle cx="170" cy="135" r="5" fill="#D08040" opacity="0.8"/>
+        <text x="182" y="139" fill="#C8B89A" font-size="10" font-family="DM Sans,sans-serif">Boulder</text>
+        <circle cx="190" cy="85" r="5" fill="#D08040" opacity="0.8"/>
+        <text x="202" y="89" fill="#C8B89A" font-size="10" font-family="DM Sans,sans-serif">Fort Collins</text>
+        <circle cx="210" cy="255" r="5" fill="#D08040" opacity="0.8"/>
+        <text x="222" y="259" fill="#C8B89A" font-size="10" font-family="DM Sans,sans-serif">Colo. Springs</text>
+        <circle cx="230" cy="290" r="4" fill="#A08060" opacity="0.7"/>
+        <text x="240" y="293" fill="#A09070" font-size="9" font-family="DM Sans,sans-serif">Pueblo</text>
+        <circle cx="130" cy="220" r="4" fill="#A08060" opacity="0.7"/>
+        <text x="100" y="224" fill="#A09070" font-size="9" font-family="DM Sans,sans-serif">Golden</text>
+        <text x="20" y="340" fill="#B05A1A" font-size="9" font-family="DM Sans,sans-serif" opacity="0.8">I-25 CORRIDOR</text>
+      </svg>
+      <div class="city-tags">
+        <span class="city-tag">Denver Metro</span>
+        <span class="city-tag">Boulder County</span>
+        <span class="city-tag">Larimer County</span>
+        <span class="city-tag">El Paso County</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div><div class="stat-num">340+</div><div class="stat-label">Deals closed</div></div>
+    <div><div class="stat-num">$28M</div><div class="stat-label">In transactions</div></div>
+    <div><div class="stat-num">72 hrs</div><div class="stat-label">Avg. close time</div></div>
+    <div><div class="stat-num">1,200+</div><div class="stat-label">Active investors</div></div>
+  </div>
+
+  <section class="process" id="process">
+    <p class="section-title">Simple process, fast closes</p>
+    <p class="section-sub">From first call to funded — in as little as three days.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <p class="step-title">Join the list</p>
+        <p class="step-text">Tell us your buy box — price range, markets, property type. We send only what fits.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <p class="step-title">Receive deals</p>
+        <p class="step-text">Off-market properties with ARV, repair estimates, and comps — straight to your inbox.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <p class="step-title">Walk or waive</p>
+        <p class="step-text">Tour with us, ask questions, and submit an offer — or pass with a single reply.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <p class="step-title">Close quickly</p>
+        <p class="step-text">Title is pre-opened. We coordinate everything. Cash or hard money, no delays.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="listings" id="listings">
+    <p class="section-title">Active deals</p>
+    <p class="section-sub">Current inventory across the Front Range — updated weekly.</p>
+    <div class="listing-grid">
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <svg viewBox="0 0 260 140" width="260" height="140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="140" fill="#2A2218"/>
+            <rect x="40" y="60" width="180" height="80" fill="#3A2E22"/>
+            <polygon points="40,60 130,20 220,60" fill="#4A3A28"/>
+            <rect x="80" y="85" width="40" height="55" fill="#2A2218"/>
+            <rect x="150" y="90" width="30" height="30" fill="#2A2218"/>
+            <rect x="155" y="95" width="10" height="15" fill="#B05A1A" opacity="0.4"/>
+          </svg>
+          <span class="listing-badge">Fix &amp; Flip</span>
+        </div>
+        <div class="listing-body">
+          <p class="listing-price">$238,000</p>
+          <p class="listing-addr">3842 Umatilla St, Denver, CO 80211</p>
+          <div class="listing-tags">
+            <span class="tag">3 bed / 1 bath</span>
+            <span class="tag">ARV $390K</span>
+            <span class="tag">Est. repairs $55K</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <svg viewBox="0 0 260 140" width="260" height="140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="140" fill="#1A2228"/>
+            <rect x="30" y="55" width="90" height="85" fill="#283040"/>
+            <rect x="140" y="65" width="90" height="75" fill="#2A3545"/>
+            <rect x="30" y="45" width="90" height="15" fill="#354050"/>
+            <rect x="140" y="52" width="90" height="15" fill="#354050"/>
+            <rect x="55" y="85" width="25" height="55" fill="#1A2228"/>
+            <rect x="165" y="90" width="25" height="50" fill="#1A2228"/>
+          </svg>
+          <span class="listing-badge">Rental</span>
+        </div>
+        <div class="listing-body">
+          <p class="listing-price">$310,000</p>
+          <p class="listing-addr">1127 W Oak St, Fort Collins, CO 80521</p>
+          <div class="listing-tags">
+            <span class="tag">Duplex</span>
+            <span class="tag">$2,400/mo income</span>
+            <span class="tag">9.3% cap rate</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listing-card">
+        <div class="listing-img">
+          <svg viewBox="0 0 260 140" width="260" height="140" xmlns="http://www.w3.org/2000/svg">
+            <rect width="260" height="140" fill="#221A1A"/>
+            <rect x="50" y="50" width="160" height="90" fill="#332222"/>
+            <polygon points="50,50 130,15 210,50" fill="#442B2B"/>
+            <rect x="90" y="80" width="35" height="60" fill="#221A1A"/>
+            <rect x="145" y="88" width="25" height="30" fill="#221A1A"/>
+            <rect x="148" y="91" width="8" height="12" fill="#B05A1A" opacity="0.35"/>
+          </svg>
+          <span class="listing-badge">Distressed</span>
+        </div>
+        <div class="listing-body">
+          <p class="listing-price">$182,500</p>
+          <p class="listing-addr">905 Moreno Ave, Colorado Springs, CO 80905</p>
+          <div class="listing-tags">
+            <span class="tag">4 bed / 2 bath</span>
+            <span class="tag">ARV $295K</span>
+            <span class="tag">Cash only</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <h2>Get deals in your inbox</h2>
+    <p class="cta-sub">Join 1,200+ Colorado investors who see off-market properties first.</p>
+    <div class="cta-form">
+      <input class="cta-input" type="text" placeholder="Your name" />
+      <input class="cta-input" type="email" placeholder="Email address" />
+      <!--
+        To make this form actually send emails, replace this button with a
+        service like Mailchimp, ConvertKit, or Formspree. See README below.
+      -->
+      <button class="btn" style="white-space:nowrap;" onclick="alert('Form submission: connect to Mailchimp or Formspree to capture leads.')">Join Free</button>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Front Range Wholesale LLC · Westminster, CO</span>
+    <span>Licensed Colorado RE Wholesaler · Not a licensed broker</span>
+  </footer>
+
+  <!--
+  =====================================================================
+  HOW TO DEPLOY THIS PAGE
+  =====================================================================
+
+  OPTION 1 — NETLIFY (free, easiest)
+  1. Go to netlify.com and create a free account
+  2. Drag this HTML file into the Netlify "Drop" area at app.netlify.com/drop
+  3. Your site goes live instantly with a .netlify.app URL
+  4. To use a custom domain: buy one at Namecheap (~$10/yr) and point it
+     in Netlify under Site Settings > Domain Management
+
+  OPTION 2 — GITHUB PAGES (free)
+  1. Create a free GitHub account at github.com
+  2. Create a new repository, name it yourusername.github.io
+  3. Upload this file as "index.html"
+  4. Go to Settings > Pages > Source: main branch
+  5. Live at yourusername.github.io
+
+  OPTION 3 — JUST OPEN LOCALLY
+  Double-click the file in Finder/Explorer to preview it in any browser.
+  Share it by emailing the file directly.
+
+  =====================================================================
+  HOW TO CAPTURE LEADS (the email form)
+  =====================================================================
+
+  EASIEST — Formspree (free up to 50 submissions/mo):
+  1. Go to formspree.io and create a free account
+  2. Create a new form and copy your form endpoint URL
+  3. Replace the <section class="cta"> form with:
+
+     <form action="https://formspree.io/f/YOUR_ID" method="POST"
+           style="display:flex;gap:10px;flex-wrap:wrap;max-width:480px;margin:0 auto;">
+       <input class="cta-input" type="text" name="name" placeholder="Your name" required />
+       <input class="cta-input" type="email" name="email" placeholder="Email address" required />
+       <button class="btn" type="submit">Join Free</button>
+     </form>
+
+  MAILCHIMP (free up to 500 contacts):
+  1. Create a free Mailchimp account
+  2. Go to Audience > Signup Forms > Embedded forms
+  3. Copy the form action URL and paste it as the form's action attribute above
+  4. Change method to "POST" and add name="_mc_id" hidden input if required
+
+  =====================================================================
+  -->
+
+</body>
+</html>
